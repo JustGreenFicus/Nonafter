@@ -132,5 +132,18 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <div id="modal-overlay" class="t-modal" onclick="closeModal(event)">
+    <span class="close-btn" onclick="closeModal(event)">&times;</span>
+    
+    <button class="modal-prev" onclick="moveModalSlide(-1)">&#10094;</button>
+    <button class="modal-next" onclick="moveModalSlide(1)">&#10095;</button>
+    
+    <div class="modal-content">
+        <img id="full-image" src="" alt="Увеличенное изображение">
+        <div id="modal-caption"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
