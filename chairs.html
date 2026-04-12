@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог стульев — Стол Арт</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="t-nav">
+        <div class="t-container t-nav-wrapper">
+            <a href="index.html" class="t-logo">СТОЛ<br>АРТ</a>
+            <ul class="t-menu"><li><a href="index.html" style="color:#ff7300;">← На главную</a></li></ul>
+        </div>
+    </nav>
+    <div class="t-container t-padding">
+        <div class="t-section-title"><h2>Наши стулья</h2><div class="t-line"></div></div>
+        <div class="t-grid">
+            <div class="t-card">
+                <div class="slider" data-current="0">
+                    <div class="slides"><img src="img/orion1.jpg" class="active"><img src="img/orion2.jpg"><img src="img/orion3.jpg"></div>
+                    <button class="prev" onclick="moveSlide(this, -1)">&#10094;</button><button class="next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+                <h3>Орион</h3><p></p>
+            </div>
+            <div class="t-card">
+                <div class="slider" data-current="0">
+                    <div class="slides"><img src="img/uyut1.jpg" class="active"><img src="img/uyut2.jpg"><img src="img/uyut3.jpg"></div>
+                    <button class="prev" onclick="moveSlide(this, -1)">&#10094;</button><button class="next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+                <h3>Уют</h3><p></p>
+            </div>
+            <div class="t-card">
+                <div class="slider" data-current="0">
+                    <div class="slides"><img src="img/saturn1.jpg" class="active"><img src="img/saturn2.jpg"><img src="img/saturn3.jpg"></div>
+                    <button class="prev" onclick="moveSlide(this, -1)">&#10094;</button><button class="next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+                <h3>Сатурн</h3><p></p>
+            </div>
+            <div class="t-card">
+                <div class="slider" data-current="0">
+                    <div class="slides"><img src="img/valencia1.jpg" class="active"><img src="img/valencia2.jpg"><img src="img/valencia3.jpg"></div>
+                    <button class="prev" onclick="moveSlide(this, -1)">&#10094;</button><button class="next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+                <h3>Валенсия</h3><p></p>
+            </div>
+            <div class="t-card">
+                <div class="slider" data-current="0">
+                    <div class="slides"><img src="img/scandi1.jpg" class="active"><img src="img/scandi2.jpg"><img src="img/scandi3.jpg"></div>
+                    <button class="prev" onclick="moveSlide(this, -1)">&#10094;</button><button class="next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+                <h3>Сканди</h3><p></p>
+            </div>
+            <div class="t-card">
+                <div class="slider" data-current="0">
+                    <div class="slides"><img src="img/artic1.jpg" class="active"><img src="img/artic2.jpg"><img src="img/artic3.jpg"></div>
+                    <button class="prev" onclick="moveSlide(this, -1)">&#10094;</button><button class="next" onclick="moveSlide(this, 1)">&#10095;</button>
+                </div>
+                <h3>Арти</h3><p></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
