@@ -25,8 +25,29 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
 .t-section-title { text-align: center; margin-bottom: 30px; }
 
 /* Слайдер */
-.slider { position: relative; width: 100%; height: 300px; background: #eee; border-radius: 8px; overflow: hidden; margin-bottom: 15px; }
-.slides img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s; }
+/* Слайдер в карточке */
+.slider { 
+    position: relative; 
+    width: 100%; 
+    /* Вместо fixed height используем соотношение сторон */
+    aspect-ratio: 4 / 3; /* Классический прямоугольник. Можно поставить 1 / 1 для квадрата */
+    background: #f9f9f9; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    margin-bottom: 15px; 
+}
+
+.slides img { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    /* cover — заполняет блок (обрезает края), contain — показывает фото целиком (будут пустые поля) */
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 0.4s; 
+}
 .slides img.active { opacity: 1; }
 .prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; padding: 12px; cursor: pointer; z-index: 5; font-size: 18px; transition: 0.3s; }
 .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
@@ -45,6 +66,7 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
 .t-phone:hover { color: #ff7300; }
 .t-email { font-size: 18px; color: #ff7300; text-decoration: none; display: inline-block; transition: 0.3s; }
 .t-email:hover { color: #fff; }
+
 /* Стили модального окна */
 .t-modal {
     display: none; /* Скрыто по умолчанию */
