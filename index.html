@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стол Арт — Производство столов и стульев</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="t-nav">
+        <div class="t-container t-nav-wrapper">
+            <div class="t-logo">СТОЛ<br>АРТ</div>
+            <ul class="t-menu">
+                <li><a href="chairs.html">Стулья</a></li>
+                <li><a href="tables.html">Столы</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="t-cover">
+        <div class="t-cover-filter"></div>
+        <div class="t-container t-cover-content">
+            <h1>Мебель из дерева</h1>
+            <p>Столы и стулья ручной работы от производителя. Более 15 лет опыта.</p>
+            <div class="hero-buttons">
+                <a href="tables.html" class="t-btn">Каталог столов</a>
+                <a href="chairs.html" class="t-btn">Каталог стульев</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="t-container t-padding">
+        <div class="t-section-title">
+            <h2>О производстве</h2>
+            <div class="t-line"></div>
+        </div>
+        <p class="about-text">
+            Мы — производственная компания полного цикла от доски и листа МДФ - до готового изделия. На производственной площади более 3000 кв.м. В работе используем ЧПУ станки BIESSE,  BACCI и другие. Наша продукция представлена широкой сетью дилеров по всей России. В работе применяем массив кавказского бука, шпон дуба и американского ореха. В нашем ассортименте есть как и классические, так и современные модели и комплекты. В столах имеется уникальная система хранения вставок типа "книжка". Специальный механизм позволяет разложить стол за считанные секунды без лишних усилий. Вставки не нужно хранить отдельно- они всегда под рукой внутри стола. Такая конструкция делает наши модели более функциональными и вместительными, по сравнению с другими производителями. Комплексные решения для вашего дома: дополните стол нашими стульями в любой обивке. Широкая палитра тканей поможет создать безупречный комплект.  
+      
+        </p>
+    </section>
+
+    <footer id="contacts" class="t-footer">
+        <div class="t-container">
+            <a href="tel:+79180081546" class="t-phone">8 (918) 008 15 46</a><br>
+            <a href="mailto:stol-art.ru@mail.ru" class="t-email">stol-art.ru@mail.ru</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+  <div id="modal-overlay" class="t-modal" onclick="closeModal(event)">
+    <span class="close-btn" onclick="closeModal(event)">&times;</span>
+    
+    <button class="modal-prev" onclick="moveModalSlide(-1)">&#10094;</button>
+    <button class="modal-next" onclick="moveModalSlide(1)">&#10095;</button>
+    
+    <div class="modal-content">
+        <img id="full-image" src="" alt="Увеличенное изображение">
+        <div id="modal-caption"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
