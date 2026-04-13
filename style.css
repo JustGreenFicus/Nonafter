@@ -1,4 +1,4 @@
-/* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+/* --- БАЗОВЫЕ НАСТРОЙКИ (МАКСИМАЛЬНАЯ ПРОСТОТА) --- */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -7,11 +7,10 @@
 
 body { 
     font-family: 'Roboto', sans-serif; 
-    color: #2c2c2c; 
+    color: #000000; /* Чисто черный текст */
     line-height: 1.6; 
     scroll-behavior: smooth;
-    /* Тёплый светло-бежевый фон, идеально под зелёный и дерево */
-    background-color: #f7f6f2; 
+    background-color: #ffffff; /* Чисто белый фон страницы */
 }
 
 .t-container { 
@@ -21,20 +20,21 @@ body {
 }
 
 .t-padding { 
-    padding: 100px 0; 
+    padding: 80px 0; /* Вернул стандартные отступы */
 }
 
-/* --- НАВИГАЦИЯ --- */
+/* --- НАВИГАЦИЯ (ЧИСТАЯ И БЕЛАЯ) --- */
 .t-nav { 
     height: 80px; 
     display: flex; 
     align-items: center; 
-    border-bottom: 1px solid #e0e0d5; 
+    border-bottom: 1px solid #eee; 
     position: sticky; 
     top: 0; 
     background: #fff; 
     z-index: 999; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    /* Тень сделаем чуть заметнее для красочности */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .t-nav-wrapper { 
@@ -50,7 +50,7 @@ body {
     line-height: 1.1; 
     text-align: center; 
     letter-spacing: 1px; 
-    color: #1b3022; /* Логотип теперь тоже тёмно-зелёный */
+    color: #000000; 
     text-decoration: none; 
 }
 
@@ -65,21 +65,21 @@ body {
 
 .t-menu a { 
     text-decoration: none; 
-    color: #4c4c4c; 
+    color: #333; /* Мягче черного */
     font-weight: 700; 
     text-transform: uppercase; 
-    font-size: 13px; 
+    font-size: 14px; 
     letter-spacing: 0.5px;
     transition: 0.3s;
 }
 
 .t-menu a:hover { 
-    color: #1b3022; /* Акцент при наведении */
+    color: #ff6f40; /* Красочный акцент */
 }
 
-/* --- ОБЛОЖКА --- */
+/* --- ОБЛОЖКА (НАТУРАЛЬНЫЕ ЦВЕТА) --- */
 .t-cover { 
-    height: 75vh; 
+    height: 70vh; /* Вернул 70vh */
     position: relative; 
     background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; 
     display: flex; 
@@ -91,129 +91,8 @@ body {
 
 .t-cover-filter { 
     position: absolute; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    background: rgba(27, 48, 34, 0.65); /* Тёмно-зелёный фильтр на обложку */
-}
-
-.t-cover-content { 
-    position: relative; 
-    z-index: 2; 
-}
-
-.t-cover h1 { 
-    font-size: 56px; 
-    font-weight: 700; 
-    margin-bottom: 25px; 
-}
-
-/* --- КНОПКИ (ГЛУБОКИЙ ЗЕЛЁНЫЙ) --- */
-.t-btn { 
-    background: #1b3022; /* Цвет хвои */
-    color: #fff; 
-    padding: 18px 45px; 
-    text-decoration: none; 
-    font-weight: 700; 
-    border-radius: 12px; 
-    display: inline-block; 
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 1px;
-    transition: 0.3s ease-out; 
-    box-shadow: 0 4px 12px rgba(27, 48, 34, 0.2);
-}
-
-.t-btn:hover { 
-    background: #2a4734; /* Чуть светлее при наведении */
-    transform: translateY(-2px); 
-    box-shadow: 0 8px 20px rgba(27, 48, 34, 0.3);
-}
-
-.t-line { 
-    width: 50px; 
-    height: 3px; 
-    background: #1b3022; 
-    margin: 20px auto; 
-}
-
-/* --- КАРТОЧКИ ТОВАРОВ --- */
-.t-card { 
-    background: #fff; 
-    padding: 20px; 
-    border-radius: 20px; 
-    border: 1px solid #e8e8e0; 
-    text-align: center; 
-    transition: 0.3s ease-out;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-.t-card:hover { 
-    transform: translateY(-5px); 
-    box-shadow: 0 15px 35px rgba(27, 48, 34, 0.1); /* Тень с оттенком зелёного */
-}
-
-.slider { 
-    position: relative; 
+    top: 0; 
+    left: 0; 
     width: 100%; 
-    aspect-ratio: 4 / 3; 
-    background: #f9f9f9; 
-    border-radius: 12px; 
-    overflow: hidden; 
-    margin-bottom: 20px; 
-}
-
-.size { 
-    display: block; 
-    color: #2a4734; 
-    font-weight: 700; 
-    margin-top: 15px; 
-    font-size: 14px; 
-}
-
-/* --- ФУТЕР --- */
-.t-footer { 
-    background: #141f17; /* Почти чёрный, но с зелёным подтоном */
-    color: #fff; 
-    padding: 70px 0; 
-    text-align: center; 
-}
-
-.t-phone { 
-    font-size: 28px; 
-    font-weight: 700; 
-    color: #fff; 
-    text-decoration: none; 
-}
-
-.t-email { 
-    color: #5d8269; /* Светло-зелёный для ссылок в футере */
-    text-decoration: none; 
-}
-
-/* --- МОДАЛЬНОЕ ОКНО --- */
-.t-modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(10, 20, 14, 0.95); /* Модалка с зелёным отливом */
-    justify-content: center;
-    align-items: center;
-}
-
-#full-image {
-    max-width: 100%;
-    max-height: 80vh; 
-    border-radius: 15px; 
-    box-shadow: 0 0 50px rgba(0,0,0,0.6);
-}
-
-.modal-prev, .modal-next {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.modal-prev:hover, .modal-next:hover { 
-    background: #1b3022; /* Кнопки в модалке при наведении становятся зелёными */
-}
+    height: 100%; 
+    /* --- ВЕРНУЛ ЧЕРНЫЙ ФИЛЬТР БЕЗ З
