@@ -1,98 +1,152 @@
-/* --- БАЗОВЫЕ НАСТРОЙКИ (МАКСИМАЛЬНАЯ ПРОСТОТА) --- */
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0; 
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-behavior: smooth; }
+.t-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.t-padding { padding: 80px 0; }
 
-body { 
-    font-family: 'Roboto', sans-serif; 
-    color: #000000; /* Чисто черный текст */
-    line-height: 1.6; 
-    scroll-behavior: smooth;
-    background-color: #ffffff; /* Чисто белый фон страницы */
-}
+/* Шапка и Логотип */
+.t-nav { height: 80px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 999; }
+.t-nav-wrapper { display: flex; justify-content: space-between; width: 100%; align-items: center; }
+.t-logo { font-weight: 700; font-size: 20px; line-height: 1.1; text-align: center; letter-spacing: 1px; color: #000; text-decoration: none; }
+.t-menu { display: flex; list-style: none; }
+.t-menu li { margin-left: 25px; }
+.t-menu a { text-decoration: none; color: #333; font-weight: 700; text-transform: uppercase; font-size: 14px; }
 
-.t-container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
-}
+/* Обложка */
+.t-cover { height: 70vh; position: relative; background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+.t-cover-filter { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+.t-cover-content { position: relative; z-index: 2; }
+.t-cover h1 { font-size: 48px; margin-bottom: 20px; }
+.hero-buttons { margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-.t-padding { 
-    padding: 80px 0; /* Вернул стандартные отступы */
-}
-
-/* --- НАВИГАЦИЯ (ЧИСТАЯ И БЕЛАЯ) --- */
-.t-nav { 
-    height: 80px; 
-    display: flex; 
-    align-items: center; 
-    border-bottom: 1px solid #eee; 
-    position: sticky; 
-    top: 0; 
-    background: #fff; 
-    z-index: 999; 
-    /* Тень сделаем чуть заметнее для красочности */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.t-nav-wrapper { 
-    display: flex; 
-    justify-content: space-between; 
-    width: 100%; 
-    align-items: center; 
-}
-
-.t-logo { 
-    font-weight: 700; 
-    font-size: 20px; 
-    line-height: 1.1; 
-    text-align: center; 
-    letter-spacing: 1px; 
-    color: #000000; 
-    text-decoration: none; 
-}
-
-.t-menu { 
-    display: flex; 
-    list-style: none; 
-}
-
-.t-menu li { 
-    margin-left: 25px; 
-}
-
-.t-menu a { 
-    text-decoration: none; 
-    color: #333; /* Мягче черного */
-    font-weight: 700; 
-    text-transform: uppercase; 
-    font-size: 14px; 
-    letter-spacing: 0.5px;
-    transition: 0.3s;
-}
-
-.t-menu a:hover { 
-    color: #ff6f40; /* Красочный акцент */
-}
-
-/* --- ОБЛОЖКА (НАТУРАЛЬНЫЕ ЦВЕТА) --- */
-.t-cover { 
-    height: 70vh; /* Вернул 70vh */
-    position: relative; 
-    background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
+/* Кнопки — СДЕЛАЛ КРУПНЕЕ СКРУГЛЕНИЕ */
+.t-btn { 
+    background: #ff7300; 
     color: #fff; 
-    text-align: center; 
+    padding: 15px 35px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    border-radius: 10px; /* Было 4px */
+    display: inline-block; 
+    transition: 0.3s; 
+}
+.t-btn:hover { background: #e66700; transform: translateY(-2px); }
+
+.t-line { width: 50px; height: 3px; background: #ff7300; margin: 15px auto; }
+.t-section-title { text-align: center; margin-bottom: 30px; }
+
+/* Слайдер в карточке */
+.slider { 
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 4 / 3; 
+    background: #f9f9f9; 
+    border-radius: 15px; /* Скругление слайдера */
+    overflow: hidden; 
+    margin-bottom: 15px; 
 }
 
-.t-cover-filter { 
+.slides img { 
     position: absolute; 
     top: 0; 
     left: 0; 
     width: 100%; 
     height: 100%; 
-    /* --- ВЕРНУЛ ЧЕРНЫЙ ФИЛЬТР БЕЗ З
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 0.4s; 
+}
+.slides img.active { opacity: 1; }
+
+.prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; padding: 12px; cursor: pointer; z-index: 5; font-size: 18px; transition: 0.3s; }
+.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+.prev { left: 0; border-radius: 0 8px 8px 0; }
+.next { right: 0; border-radius: 8px 0 0 8px; }
+
+/* Сетка и Карточки — УВЕЛИЧИЛ СКРУГЛЕНИЕ */
+.t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.t-card { 
+    border: 1px solid #eee; 
+    padding: 20px; 
+    border-radius: 20px; /* Было 10px */
+    text-align: center; 
+    background: #fff; 
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.t-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
+.size { display: block; color: #ff7300; font-weight: 700; margin-top: 10px; font-size: 13px; }
+.about-text { text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; }
+
+/* Футер */
+.t-footer { background: #111; color: #fff; padding: 50px 0; text-align: center; }
+.t-phone { font-size: 28px; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; transition: 0.3s; }
+.t-phone:hover { color: #ff7300; }
+.t-email { font-size: 18px; color: #ff7300; text-decoration: none; display: inline-block; transition: 0.3s; }
+.t-email:hover { color: #fff; }
+
+/* Стили модального окна — ПОЧИЩЕНО */
+.t-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 80%;
+    text-align: center;
+}
+
+#full-image {
+    max-width: 100%;
+    max-height: 80vh; 
+    border-radius: 15px; /* Скругление большого фото */
+    object-fit: contain;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+#modal-caption {
+    color: #fff;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 50px;
+    cursor: pointer;
+}
+
+.modal-prev, .modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border: none;
+    padding: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 50%; /* Сделал кнопки навигации круглыми */
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.modal-prev:hover, .modal-next:hover { background: rgba(255,255,255,0.3); }
+.modal-prev { left: 20px; }
+.modal-next { right: 20px; }
