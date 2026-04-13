@@ -1,152 +1,219 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-behavior: smooth; }
-.t-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.t-padding { padding: 80px 0; }
+/* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
-/* Шапка и Логотип */
-.t-nav { height: 80px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 999; }
-.t-nav-wrapper { display: flex; justify-content: space-between; width: 100%; align-items: center; }
-.t-logo { font-weight: 700; font-size: 20px; line-height: 1.1; text-align: center; letter-spacing: 1px; color: #000; text-decoration: none; }
-.t-menu { display: flex; list-style: none; }
-.t-menu li { margin-left: 25px; }
-.t-menu a { text-decoration: none; color: #333; font-weight: 700; text-transform: uppercase; font-size: 14px; }
+body { 
+    font-family: 'Roboto', sans-serif; 
+    color: #2c2c2c; 
+    line-height: 1.6; 
+    scroll-behavior: smooth;
+    /* Тёплый светло-бежевый фон, идеально под зелёный и дерево */
+    background-color: #f7f6f2; 
+}
 
-/* Обложка */
-.t-cover { height: 70vh; position: relative; background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
-.t-cover-filter { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-.t-cover-content { position: relative; z-index: 2; }
-.t-cover h1 { font-size: 48px; margin-bottom: 20px; }
-.hero-buttons { margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+.t-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
 
-/* Кнопки — СДЕЛАЛ КРУПНЕЕ СКРУГЛЕНИЕ */
-.t-btn { 
-    background: #ff7300; 
+.t-padding { 
+    padding: 100px 0; 
+}
+
+/* --- НАВИГАЦИЯ --- */
+.t-nav { 
+    height: 80px; 
+    display: flex; 
+    align-items: center; 
+    border-bottom: 1px solid #e0e0d5; 
+    position: sticky; 
+    top: 0; 
+    background: #fff; 
+    z-index: 999; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.t-nav-wrapper { 
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
+    align-items: center; 
+}
+
+.t-logo { 
+    font-weight: 700; 
+    font-size: 20px; 
+    line-height: 1.1; 
+    text-align: center; 
+    letter-spacing: 1px; 
+    color: #1b3022; /* Логотип теперь тоже тёмно-зелёный */
+    text-decoration: none; 
+}
+
+.t-menu { 
+    display: flex; 
+    list-style: none; 
+}
+
+.t-menu li { 
+    margin-left: 25px; 
+}
+
+.t-menu a { 
+    text-decoration: none; 
+    color: #4c4c4c; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    font-size: 13px; 
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.t-menu a:hover { 
+    color: #1b3022; /* Акцент при наведении */
+}
+
+/* --- ОБЛОЖКА --- */
+.t-cover { 
+    height: 75vh; 
+    position: relative; 
+    background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
     color: #fff; 
-    padding: 15px 35px; 
+    text-align: center; 
+}
+
+.t-cover-filter { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(27, 48, 34, 0.65); /* Тёмно-зелёный фильтр на обложку */
+}
+
+.t-cover-content { 
+    position: relative; 
+    z-index: 2; 
+}
+
+.t-cover h1 { 
+    font-size: 56px; 
+    font-weight: 700; 
+    margin-bottom: 25px; 
+}
+
+/* --- КНОПКИ (ГЛУБОКИЙ ЗЕЛЁНЫЙ) --- */
+.t-btn { 
+    background: #1b3022; /* Цвет хвои */
+    color: #fff; 
+    padding: 18px 45px; 
     text-decoration: none; 
     font-weight: 700; 
-    border-radius: 10px; /* Было 4px */
+    border-radius: 12px; 
     display: inline-block; 
-    transition: 0.3s; 
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s ease-out; 
+    box-shadow: 0 4px 12px rgba(27, 48, 34, 0.2);
 }
-.t-btn:hover { background: #e66700; transform: translateY(-2px); }
 
-.t-line { width: 50px; height: 3px; background: #ff7300; margin: 15px auto; }
-.t-section-title { text-align: center; margin-bottom: 30px; }
+.t-btn:hover { 
+    background: #2a4734; /* Чуть светлее при наведении */
+    transform: translateY(-2px); 
+    box-shadow: 0 8px 20px rgba(27, 48, 34, 0.3);
+}
 
-/* Слайдер в карточке */
+.t-line { 
+    width: 50px; 
+    height: 3px; 
+    background: #1b3022; 
+    margin: 20px auto; 
+}
+
+/* --- КАРТОЧКИ ТОВАРОВ --- */
+.t-card { 
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 20px; 
+    border: 1px solid #e8e8e0; 
+    text-align: center; 
+    transition: 0.3s ease-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.t-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 35px rgba(27, 48, 34, 0.1); /* Тень с оттенком зелёного */
+}
+
 .slider { 
     position: relative; 
     width: 100%; 
     aspect-ratio: 4 / 3; 
     background: #f9f9f9; 
-    border-radius: 15px; /* Скругление слайдера */
+    border-radius: 12px; 
     overflow: hidden; 
-    margin-bottom: 15px; 
+    margin-bottom: 20px; 
 }
 
-.slides img { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    opacity: 0; 
-    transition: opacity 0.4s; 
+.size { 
+    display: block; 
+    color: #2a4734; 
+    font-weight: 700; 
+    margin-top: 15px; 
+    font-size: 14px; 
 }
-.slides img.active { opacity: 1; }
 
-.prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; padding: 12px; cursor: pointer; z-index: 5; font-size: 18px; transition: 0.3s; }
-.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
-.prev { left: 0; border-radius: 0 8px 8px 0; }
-.next { right: 0; border-radius: 8px 0 0 8px; }
-
-/* Сетка и Карточки — УВЕЛИЧИЛ СКРУГЛЕНИЕ */
-.t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.t-card { 
-    border: 1px solid #eee; 
-    padding: 20px; 
-    border-radius: 20px; /* Было 10px */
+/* --- ФУТЕР --- */
+.t-footer { 
+    background: #141f17; /* Почти чёрный, но с зелёным подтоном */
+    color: #fff; 
+    padding: 70px 0; 
     text-align: center; 
-    background: #fff; 
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-.t-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
 
-.size { display: block; color: #ff7300; font-weight: 700; margin-top: 10px; font-size: 13px; }
-.about-text { text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; }
+.t-phone { 
+    font-size: 28px; 
+    font-weight: 700; 
+    color: #fff; 
+    text-decoration: none; 
+}
 
-/* Футер */
-.t-footer { background: #111; color: #fff; padding: 50px 0; text-align: center; }
-.t-phone { font-size: 28px; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; transition: 0.3s; }
-.t-phone:hover { color: #ff7300; }
-.t-email { font-size: 18px; color: #ff7300; text-decoration: none; display: inline-block; transition: 0.3s; }
-.t-email:hover { color: #fff; }
+.t-email { 
+    color: #5d8269; /* Светло-зелёный для ссылок в футере */
+    text-decoration: none; 
+}
 
-/* Стили модального окна — ПОЧИЩЕНО */
+/* --- МОДАЛЬНОЕ ОКНО --- */
 .t-modal {
     display: none;
     position: fixed;
     z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(10, 20, 14, 0.95); /* Модалка с зелёным отливом */
     justify-content: center;
     align-items: center;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 80%;
-    text-align: center;
 }
 
 #full-image {
     max-width: 100%;
     max-height: 80vh; 
-    border-radius: 15px; /* Скругление большого фото */
-    object-fit: contain;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-}
-
-#modal-caption {
-    color: #fff;
-    margin-top: 15px;
-    font-size: 1.2rem;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: #fff;
-    font-size: 50px;
-    cursor: pointer;
+    border-radius: 15px; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.6);
 }
 
 .modal-prev, .modal-next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.1);
-    color: white;
-    border: none;
-    padding: 20px;
-    font-size: 30px;
-    cursor: pointer;
-    border-radius: 50%; /* Сделал кнопки навигации круглыми */
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
-.modal-prev:hover, .modal-next:hover { background: rgba(255,255,255,0.3); }
-.modal-prev { left: 20px; }
-.modal-next { right: 20px; }
+.modal-prev:hover, .modal-next:hover { 
+    background: #1b3022; /* Кнопки в модалке при наведении становятся зелёными */
+}
