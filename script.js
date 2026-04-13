@@ -1,98 +1,77 @@
+// --- ПЕРЕМЕННЫЕ СОСТОЯНИЯ ---
+let currentGallery = [];    // Список картинок текущего товара
+let currentModalIndex = 0;  // Индекс картинки в модальном окне
+
+// --- 1. ФУНКЦИЯ ДЛЯ СЛАЙДЕРА В КАРТОЧКЕ ---
 function moveSlide(button, step) {
     const slider = button.closest('.slider');
     const images = slider.querySelectorAll('.slides img');
-    let currentIndex = parseInt(slider.getAttribute('data-current'));
+    let currentIndex = parseInt(slider.getAttribute('data-current')) || 0;
 
+    // Убираем активный класс с текущей картинки
     images[currentIndex].classList.remove('active');
-    currentIndex += step;
+    
+    // Считаем новый индекс (с поддержкой бесконечного листания)
+    currentIndex = (currentIndex + step + images.length) % images.length;
 
-    if (currentIndex >= images.length) currentIndex = 0;
-    if (currentIndex < 0) currentIndex = images.length - 1;
-
-    images[currentIndex].classList.add('active');
-    slider.setAttribute('data-current', currentIndex);
-}
-let currentGallery = []; // Список путей к картинкам текущего товара
-let currentModalIndex = 0; // Индекс картинки в модальном окне
-
-// Функция для обычного слайдера в карточке (уже была у вас)
-function moveSlide(button, direction) {
-    const slider = button.closest('.slider');
-    const images = slider.querySelectorAll('.slides img');
-    let currentIndex = parseInt(slider.getAttribute('data-current'));
-
-    images[currentIndex].classList.remove('active');
-    currentIndex = (currentIndex + direction + images.length) % images.length;
+    // Добавляем активный класс новой картинке
     images[currentIndex].classList.add('active');
     slider.setAttribute('data-current', currentIndex);
 }
 
-// Открытие модального окна
-function openModal(sliderElement) {
-    const images = sliderElement.querySelectorAll('.slides img');
-    const title = sliderElement.parentElement.querySelector('h3').innerText;
-    
-    // Собираем все ссылки на картинки этого товара
-    currentGallery = Array.from(images).map(img => img.src);
-    // Берем текущий индекс из атрибута слайдера
-    currentModalIndex = parseInt(sliderElement.getAttribute('data-current'));
-
-    const modal = document.getElementById('modal-overlay');
-    modal.style.display = 'flex';
-    
-    updateModalContent(title);
-}
-
-// Обновление контента в модалке
-function updateModalContent(title) {
-    document.getElementById('full-image').src = currentGallery[currentModalIndex];
-    if (title) document.getElementById('modal-caption').innerText = title;
-}
-
-// Листание внутри модалки
-function moveModalSlide(direction) {
-    currentModalIndex = (currentModalIndex + direction + currentGallery.length) % currentGallery.length;
-    document.getElementById('full-image').src = currentGallery[currentModalIndex];
-}
-
-// Закрытие модалки
-function closeModal(event) {
-    // Закрываем, если кликнули на крестик или на темный фон
-    if (event.target.id === 'modal-overlay' || event.target.className === 'close-btn') {
-        document.getElementById('modal-overlay').style.display = 'none';
-    }
-}
-
-// Добавим управление с клавиатуры (стрелочки и Esc)
-document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('modal-overlay');
-    if (modal.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') moveModalSlide(-1);
-        if (e.key === 'ArrowRight') moveModalSlide(1);
-        if (e.key === 'Escape') modal.style.display = 'none';
-    }
-});
-// Функция открытия окна
+// --- 2. ФУНКЦИЯ ОТКРЫТИЯ МОДАЛЬНОГО ОКНА ---
 function openModal(element) {
     const modal = document.getElementById('modal-overlay');
     const fullImg = document.getElementById('full-image');
     const caption = document.getElementById('modal-caption');
 
-    // Если нажали на слайдер, берем активную картинку, если просто на фото — берем само фото
-    const imgSrc = element.tagName === 'IMG' ? element.src : element.querySelector('img.active').src;
+    // Находим родительскую карточку
+    const card = element.closest('.t-card');
+    const title = card.querySelector('h3').innerText;
     
+    // Собираем все картинки из слайдера этой карточки
+    const images = card.querySelectorAll('.slides img');
+    currentGallery = Array.from(images).map(img => img.src);
+    
+    // Берем индекс текущей картинки из атрибута слайдера
+    currentModalIndex = parseInt(element.getAttribute('data-current')) || 0;
+
+    // Устанавливаем контент
+    fullImg.src = currentGallery[currentModalIndex];
+    caption.innerText = title;
+    
+    // Показываем окно
     modal.style.display = "flex";
-    fullImg.src = imgSrc;
-    
-    // Если у картинки есть alt или рядом есть заголовок h3, можно вывести его как подпись
-    caption.innerText = element.alt || "Просмотр изображения";
+    document.body.style.overflow = "hidden"; // Запрет скролла страницы
 }
 
-// Функция закрытия окна
+// --- 3. ЛИСТАНИЕ ВНУТРИ МОДАЛКИ ---
+function moveModalSlide(direction) {
+    if (currentGallery.length === 0) return;
+
+    currentModalIndex = (currentModalIndex + direction + currentGallery.length) % currentGallery.length;
+    document.getElementById('full-image').src = currentGallery[currentModalIndex];
+}
+
+// --- 4. ФУНКЦИЯ ЗАКРЫТИЯ ОКНА ---
 function closeModal(event) {
     const modal = document.getElementById('modal-overlay');
     // Закрываем, если нажали на фон или на крестик
-    if (event.target === modal || event.target.className === 'close-btn') {
+    if (event.target === modal || event.target.classList.contains('close-btn')) {
         modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Возвращаем скролл
     }
 }
+
+// --- 5. УПРАВЛЕНИЕ С КЛАВИАТУРЫ ---
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('modal-overlay');
+    if (modal.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') moveModalSlide(-1);
+        if (e.key === 'ArrowRight') moveModalSlide(1);
+        if (e.key === 'Escape') {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
+});
