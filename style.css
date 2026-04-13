@@ -18,21 +18,29 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
 .t-cover h1 { font-size: 48px; margin-bottom: 20px; }
 .hero-buttons { margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-/* Кнопки */
-.t-btn { background: #ff7300; color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 4px; display: inline-block; transition: 0.3s; }
-.t-btn:hover { background: #e66700; }
+/* Кнопки — СДЕЛАЛ КРУПНЕЕ СКРУГЛЕНИЕ */
+.t-btn { 
+    background: #ff7300; 
+    color: #fff; 
+    padding: 15px 35px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    border-radius: 10px; /* Было 4px */
+    display: inline-block; 
+    transition: 0.3s; 
+}
+.t-btn:hover { background: #e66700; transform: translateY(-2px); }
+
 .t-line { width: 50px; height: 3px; background: #ff7300; margin: 15px auto; }
 .t-section-title { text-align: center; margin-bottom: 30px; }
 
-/* Слайдер */
 /* Слайдер в карточке */
 .slider { 
     position: relative; 
     width: 100%; 
-    /* Вместо fixed height используем соотношение сторон */
-    aspect-ratio: 4 / 3; /* Классический прямоугольник. Можно поставить 1 / 1 для квадрата */
+    aspect-ratio: 4 / 3; 
     background: #f9f9f9; 
-    border-radius: 8px; 
+    border-radius: 15px; /* Скругление слайдера */
     overflow: hidden; 
     margin-bottom: 15px; 
 }
@@ -43,35 +51,45 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
     left: 0; 
     width: 100%; 
     height: 100%; 
-    /* cover — заполняет блок (обрезает края), contain — показывает фото целиком (будут пустые поля) */
     object-fit: cover; 
     opacity: 0; 
     transition: opacity 0.4s; 
 }
 .slides img.active { opacity: 1; }
+
 .prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; padding: 12px; cursor: pointer; z-index: 5; font-size: 18px; transition: 0.3s; }
 .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
-.prev { left: 0; border-radius: 0 4px 4px 0; }
-.next { right: 0; border-radius: 4px 0 0 4px; }
+.prev { left: 0; border-radius: 0 8px 8px 0; }
+.next { right: 0; border-radius: 8px 0 0 8px; }
 
-/* Сетка */
+/* Сетка и Карточки — УВЕЛИЧИЛ СКРУГЛЕНИЕ */
 .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.t-card { border: 1px solid #eee; padding: 15px; border-radius: 10px; text-align: center; background: #fff; }
+.t-card { 
+    border: 1px solid #eee; 
+    padding: 20px; 
+    border-radius: 20px; /* Было 10px */
+    text-align: center; 
+    background: #fff; 
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.t-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
 .size { display: block; color: #ff7300; font-weight: 700; margin-top: 10px; font-size: 13px; }
 .about-text { text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; }
 
-/* Футер и Контакты */
+/* Футер */
 .t-footer { background: #111; color: #fff; padding: 50px 0; text-align: center; }
 .t-phone { font-size: 28px; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; transition: 0.3s; }
 .t-phone:hover { color: #ff7300; }
 .t-email { font-size: 18px; color: #ff7300; text-decoration: none; display: inline-block; transition: 0.3s; }
 .t-email:hover { color: #fff; }
 
-/* Стили модального окна */
+/* Стили модального окна — ПОЧИЩЕНО */
 .t-modal {
-    display: none; /* Скрыто по умолчанию */
+    display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 10000;
     left: 0;
     top: 0;
     width: 100%;
@@ -79,24 +97,20 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
     background-color: rgba(0, 0, 0, 0.9);
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
 .modal-content {
     max-width: 90%;
     max-height: 80%;
     text-align: center;
-    cursor: default;
 }
 
 #full-image {
-    max-width: 95%; /* Чуть больше места */
-    max-height: 85vh; 
-    border-radius: 4px;
-    object-fit: contain; /* Сохраняет пропорции оригинала */
-    display: block;
-    margin: 0 auto;
-}
+    max-width: 100%;
+    max-height: 80vh; 
+    border-radius: 15px; /* Скругление большого фото */
+    object-fit: contain;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
 #modal-caption {
@@ -105,14 +119,12 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
     font-size: 1.2rem;
 }
 
-/* Кнопки в модальном окне */
 .close-btn {
     position: absolute;
     top: 20px;
     right: 30px;
     color: #fff;
-    font-size: 40px;
-    font-weight: bold;
+    font-size: 50px;
     cursor: pointer;
 }
 
@@ -126,56 +138,15 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
     padding: 20px;
     font-size: 30px;
     cursor: pointer;
+    border-radius: 50%; /* Сделал кнопки навигации круглыми */
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.3s;
 }
 
-.modal-prev:hover, .modal-next:hover { background: rgba(255,255,255,0.2); }
-.modal-prev { left: 10px; }
-.modal-next { right: 10px; }
-.t-modal {
-    display: none; /* Скрыто по умолчанию */
-    position: fixed;
-    z-index: 9999; /* Поверх всего */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9); /* Темный фон */
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 80%;
-}
-
-#full-image {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 80vh;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    object-fit: contain; /* Чтобы фото не растягивалось */
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 50px;
-    cursor: pointer;
-}
-
-/* Закругляем карточки товаров */
-.t-card {
-    border-radius: 15px; /* Скруглит все 4 угла */
-    overflow: hidden;    /* Важно! Чтобы картинка внутри не вылезала за скругленные края */
-}
-
-/* Закругляем кнопки */
-.t-btn {
-    border-radius: 8px;
-}
+.modal-prev:hover, .modal-next:hover { background: rgba(255,255,255,0.3); }
+.modal-prev { left: 20px; }
+.modal-next { right: 20px; }
