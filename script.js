@@ -72,3 +72,27 @@ document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') modal.style.display = 'none';
     }
 });
+// Функция открытия окна
+function openModal(element) {
+    const modal = document.getElementById('modal-overlay');
+    const fullImg = document.getElementById('full-image');
+    const caption = document.getElementById('modal-caption');
+
+    // Если нажали на слайдер, берем активную картинку, если просто на фото — берем само фото
+    const imgSrc = element.tagName === 'IMG' ? element.src : element.querySelector('img.active').src;
+    
+    modal.style.display = "flex";
+    fullImg.src = imgSrc;
+    
+    // Если у картинки есть alt или рядом есть заголовок h3, можно вывести его как подпись
+    caption.innerText = element.alt || "Просмотр изображения";
+}
+
+// Функция закрытия окна
+function closeModal(event) {
+    const modal = document.getElementById('modal-overlay');
+    // Закрываем, если нажали на фон или на крестик
+    if (event.target === modal || event.target.className === 'close-btn') {
+        modal.style.display = "none";
+    }
+}
