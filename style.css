@@ -12,26 +12,26 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
 .t-menu a { text-decoration: none; color: #333; font-weight: 700; text-transform: uppercase; font-size: 14px; }
 
 /* Обложка */
-.t-cover { height: 70vh; position: relative; background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+.t-cover { height: 70vh; position: relative; background: #222 url('https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1600') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; border-radius: 0 0 20px 20px; /* Скругление низа обложки */ overflow: hidden; }
 .t-cover-filter { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
 .t-cover-content { position: relative; z-index: 2; }
 .t-cover h1 { font-size: 48px; margin-bottom: 20px; }
 .hero-buttons { margin-top: 30px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
 
-/* Кнопки — СДЕЛАЛ КРУПНЕЕ СКРУГЛЕНИЕ */
+/* Кнопки */
 .t-btn { 
     background: #ff7300; 
     color: #fff; 
     padding: 15px 35px; 
     text-decoration: none; 
     font-weight: 700; 
-    border-radius: 10px; /* Было 4px */
+    border-radius: 50px; /* Кнопки-капсулы (круглые края) */
     display: inline-block; 
     transition: 0.3s; 
 }
 .t-btn:hover { background: #e66700; transform: translateY(-2px); }
 
-.t-line { width: 50px; height: 3px; background: #ff7300; margin: 15px auto; }
+.t-line { width: 50px; height: 3px; background: #ff7300; margin: 15px auto; border-radius: 10px; }
 .t-section-title { text-align: center; margin-bottom: 30px; }
 
 /* Слайдер в карточке */
@@ -57,35 +57,53 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
 }
 .slides img.active { opacity: 1; }
 
-.prev, .next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: #fff; border: none; padding: 12px; cursor: pointer; z-index: 5; font-size: 18px; transition: 0.3s; }
-.prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
-.prev { left: 0; border-radius: 0 8px 8px 0; }
-.next { right: 0; border-radius: 8px 0 0 8px; }
+/* Круглые кнопки в карточках */
+.prev, .next { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: rgba(255,255,255,0.7); /* Светлый фон для кнопок */
+    color: #333; 
+    border: none; 
+    width: 40px; 
+    height: 40px; 
+    cursor: pointer; 
+    z-index: 5; 
+    font-size: 16px; 
+    transition: 0.3s; 
+    border-radius: 50%; /* Сделал их круглыми */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prev:hover, .next:hover { background: #fff; color: #ff7300; }
+.prev { left: 10px; }
+.next { right: 10px; }
 
-/* Сетка и Карточки — УВЕЛИЧИЛ СКРУГЛЕНИЕ */
+/* Сетка и Карточки */
 .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
 .t-card { 
     border: 1px solid #eee; 
     padding: 20px; 
-    border-radius: 20px; /* Было 10px */
+    border-radius: 20px; /* Закругление углов карточек */
     text-align: center; 
     background: #fff; 
     transition: 0.3s;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
-.t-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+.t-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); transform: translateY(-5px); }
 
 .size { display: block; color: #ff7300; font-weight: 700; margin-top: 10px; font-size: 13px; }
 .about-text { text-align: center; max-width: 800px; margin: 0 auto; font-size: 18px; }
 
 /* Футер */
-.t-footer { background: #111; color: #fff; padding: 50px 0; text-align: center; }
+.t-footer { background: #111; color: #fff; padding: 50px 0; text-align: center; border-radius: 20px 20px 0 0; }
 .t-phone { font-size: 28px; font-weight: 700; color: #fff; text-decoration: none; display: inline-block; margin-bottom: 10px; transition: 0.3s; }
 .t-phone:hover { color: #ff7300; }
 .t-email { font-size: 18px; color: #ff7300; text-decoration: none; display: inline-block; transition: 0.3s; }
 .t-email:hover { color: #fff; }
 
-/* Стили модального окна — ПОЧИЩЕНО */
+/* Модальное окно */
 .t-modal {
     display: none;
     position: fixed;
@@ -108,7 +126,7 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
 #full-image {
     max-width: 100%;
     max-height: 80vh; 
-    border-radius: 15px; /* Скругление большого фото */
+    border-radius: 20px; /* Скругление фото в модалке */
     object-fit: contain;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
@@ -119,6 +137,7 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
     font-size: 1.2rem;
 }
 
+/* Круглые кнопки в модалке */
 .close-btn {
     position: absolute;
     top: 20px;
@@ -126,27 +145,28 @@ body { font-family: 'Roboto', sans-serif; color: #333; line-height: 1.6; scroll-
     color: #fff;
     font-size: 50px;
     cursor: pointer;
+    transition: 0.3s;
 }
+.close-btn:hover { color: #ff7300; }
 
 .modal-prev, .modal-next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.2);
     color: white;
     border: none;
-    padding: 20px;
-    font-size: 30px;
+    font-size: 24px;
     cursor: pointer;
-    border-radius: 50%; /* Сделал кнопки навигации круглыми */
-    width: 70px;
-    height: 70px;
+    border-radius: 50%; /* Сделал круглыми */
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: 0.3s;
 }
 
-.modal-prev:hover, .modal-next:hover { background: rgba(255,255,255,0.3); }
+.modal-prev:hover, .modal-next:hover { background: rgba(255,255,255,0.4); transform: translateY(-50%) scale(1.1); }
 .modal-prev { left: 20px; }
 .modal-next { right: 20px; }
